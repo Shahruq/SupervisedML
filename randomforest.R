@@ -19,7 +19,7 @@ library(randomForest)
 set.seed(222)
 rf <- randomForest(NSP~., data=train,
                    ntree = 300,
-                   mtry = 8, #this value is decided after tune mtry
+                   mtry = 8, #this value is decided after tune mtry #number of predictors sampled
                    importance = TRUE,
                    proximity = TRUE) #the dot after NSP indicates its relationship with all the variables in the dataset
 print(rf)
@@ -38,7 +38,7 @@ confusionMatrix(p2, test$NSP)
 plot(rf)
 
 # Tune mtry #tuning trees to improve accuracy
-t <- tuneRF(train[,-22], train[,22],
+t <- tuneRF(train[,-22], train[,22], #x - predictor values, y - response values
             stepFactor = 0.5,
             plot = TRUE,
             ntreeTry = 300, #300 because after 300 trees the error was constant so lets fine tune that
