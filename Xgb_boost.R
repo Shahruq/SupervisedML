@@ -26,9 +26,9 @@ test_label <- test[,"admit"]
 test_matrix <- xgb.DMatrix(data = as.matrix(testm), label = test_label)
 
 # Parameters
-nc <- length(unique(train_label)) #number of classes - unique classes in train_label which is 0 amd 1 in this cae
-xgb_params <- list("objective" = "multi:softprob"
-                   "eval_metric" = "mlogloss",
+nc <- length(unique(train_label)) #number of classes - unique classes in train_label which is 0 amd 1 in this case
+xgb_params <- list("objective" = "multi:softprob" #softprob gives you probability of each class 
+                   "eval_metric" = "mlogloss", #assigns probability
                    "num_class" = nc)
 watchlist <- list(train = train_matrix, test = test_matrix)
 
