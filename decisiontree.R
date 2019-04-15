@@ -22,7 +22,9 @@ mydata$NSPF <- as.factor(mydata$NSP)
 
 #Decision tree with party
 library(party)
-mytree <- ctree(NSPF~LB+AC+FM, mydata, controls=ctree_control(mincriterion=0.9, minsplit=50))
+mytree <- ctree(NSPF~LB+AC+FM, mydata, controls=ctree_control(mincriterion=0.9, minsplit=50)) 
+#mincriterion is for deciding 1-p value to be exceeded for the split
+#minsplit is the minimum number of weights in the node to be considered for the split
 print(mytree)
 plot(mytree,type="simple")
 
